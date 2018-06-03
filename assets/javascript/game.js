@@ -32,11 +32,11 @@ function initState() {
 
 function processUserGuess(event) {
     //debugger
-    var userGuess = event.key;
+    var userGuess = event.key.toUpperCase();
     var randomChar = generateRandomChar();
-    console.log("User guess:" + userGuess + " random:" + randomChar);
-    if (/^[a-zA-Z]$/.test(userGuess)) {
-        if (userGuess.toUpperCase() === randomChar) {
+    //console.log("User guess:" + userGuess + " random:" + randomChar);
+    if (/^[A-Z]$/.test(userGuess)) {
+        if (userGuess === randomChar) {
             processCorrectGuess();
         }
         else {
@@ -65,6 +65,7 @@ function processWrongGuess(userGuess) {
     }
 }
 
+// Returns a random char between "A-Z" (uppercase)
 function generateRandomChar() {
     var randNum = Math.floor(Math.random() * 25);
     var randCharCode = "A".charCodeAt(0) + randNum;
